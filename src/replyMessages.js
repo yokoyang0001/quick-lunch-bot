@@ -297,7 +297,7 @@ export default {
     }
   },
   "4": randomReply(function(){
-    return Math.floor(Math.random() * 6);
+    Math.floor(Math.random() * 6);
   }),
   "5": {
     type: 'template',
