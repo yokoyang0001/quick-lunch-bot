@@ -296,7 +296,7 @@ export default {
       ]
     }
   },
-  "4": randomReply(function(){
+  "4": randomReply(index = function(){
     Math.floor(Math.random() * 6);
   }),
   "5": {
