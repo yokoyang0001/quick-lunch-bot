@@ -1,0 +1,35 @@
+import axios from 'axios'
+import messageData from './replyMessages'
+
+exports.handler = async function(event, context, callback) {
+  const body = JSON.parse(event.body)
+  const targetEvent = body.events[0]
+  console.log(JSON.stringify(targetEvent, null, 4))
+
+  if (targetEvent.type !== "message") {
+    callback({}, null)
+  }
+
+  const matchResult = targetEvent.message.text.match(/[\d+]|スタート/)
+  if (!matchResult) {
+    callback({}, null)
+  }
+
+  const messageKey = matchResult[0]
+  const data = {
+    replyToken: targetEvent.replyToken,
+    messages: [messageData[messageKey]]
+  }
+
+  await axios.post('https://api.line.me/v2/bot/message/reply', data, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.CHANNEL}`
+    }
+  })
+
+  callback({
+    statusCode: 200,
+    body: JSON.stringify(event)
+  }, null)
+}

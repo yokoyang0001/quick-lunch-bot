@@ -1,0 +1,26 @@
+{
+  "name": "static-sample-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://yokoyang0001:Yosi0717@github.com/yokoyang0001/static-sample-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yokoyang0001/static-sample-web/issues"
+  },
+  "homepage": "https://github.com/yokoyang0001/static-sample-web#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "moment": "^2.22.2",
+    "netlify-lambda": "^1.1.0"
+  },
+  "scripts": {
+    "build": "netlify-lambda build src/",
+    "serve": "netlify-lambda serve src/"
+  }
+}
