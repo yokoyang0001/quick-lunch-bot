@@ -24,12 +24,12 @@ exports.handler = async function(event, context, callback) {
   await axios.post('https://api.line.me/v2/bot/message/reply', data, {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.CHANNEL}`
+      'Authorization': `Bearer ${process.env.CHANNEL_TOKEN}`
     }
   })
 
-  callback({
+  callback(null, {
     statusCode: 200,
     body: JSON.stringify(event)
-  }, null)
+  })
 }

@@ -1,4 +1,4 @@
-const randomReply = () => {
+function randomReply(index) {
   const shops = [
     {
       type: 'text',
@@ -24,9 +24,8 @@ const randomReply = () => {
       type: 'text',
       text: 'あのシャレオツなカレー行きますか',
     },
-  ]
-  const random = Math.floor(Math.random() * (6));
-  return shops[random];
+  ];
+  return shops[index];
 };
 
 const KITTE_WA = [
@@ -297,13 +296,15 @@ export default {
       ]
     }
   },
-  "4": this.randomReply,
+  "4": randomReply(function(){
+    return Math.floor(Math.random() * 6);
+  }),
   "5": {
     type: 'template',
     altText: '',
     template: {
       type: 'image_carousel',
-      columns: this.KITTE_WA
+      columns: KITTE_WA
     }
   },
   "6": {
@@ -311,7 +312,7 @@ export default {
     altText: '',
     template: {
       type: 'image_carousel',
-      columns: this.KITTE_CHU
+      columns: KITTE_CHU
     }
   },
   "7": {
@@ -319,7 +320,7 @@ export default {
     altText: '',
     template: {
       type: 'image_carousel',
-      columns: this.KITTE_YO
+      columns: KITTE_YO
     }
   },
   "8": {
@@ -327,7 +328,7 @@ export default {
     altText: '',
     template: {
       type: 'image_carousel',
-      columns: this.SHINMARU_WA
+      columns: SHINMARU_WA
     }
   },
   "9": {
@@ -335,7 +336,7 @@ export default {
     altText: '',
     template: {
       type: 'image_carousel',
-      columns: this.SHINMARU_YO
+      columns: SHINMARU_YO
     }
   },
   "10": {
@@ -343,7 +344,7 @@ export default {
     altText: '',
     template: {
       type: 'image_carousel',
-      columns: this.OTEMACHI_WA
+      columns: OTEMACHI_WA
     }
   },
   "11": {
@@ -351,7 +352,7 @@ export default {
     altText: '',
     template: {
       type: 'image_carousel',
-      columns: this.OTEMACHI_YO
+      columns: OTEMACHI_YO
     }
   },
 }
