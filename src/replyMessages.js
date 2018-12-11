@@ -24,8 +24,9 @@ function randomReply(index) {
       type: 'text',
       text: 'あのシャレオツなカレー行きますか',
     },
-  ];
-  return shops[index];
+  ]
+  let random = Math.floor(Math.random() * 6);
+  return shops[random];
 };
 
 const KITTE_WA = [
@@ -296,9 +297,6 @@ export default {
       ]
     }
   },
-  "4": randomReply(index = function(){
-    Math.floor(Math.random() * 6);
-  }),
   "5": {
     type: 'template',
     altText: '',

@@ -15,10 +15,46 @@ exports.handler = async function(event, context, callback) {
     callback({}, null)
   }
 
-  const messageKey = matchResult[0]
+  let messages;
+  if (targetEvent.message.text === "4") {
+    const rand = Math.floor(Math.random() * 6);
+    const shops = [
+      {
+        type: 'text',
+        text: '「つるとんたん」にしよか',
+      },
+      {
+        type: 'text',
+        text: 'KITTEのホルモンうまかったすね',
+      },
+      {
+        type: 'text',
+        text: 'やまやの明太子チャレンジすっか',
+      },
+      {
+        type: 'text',
+        text: 'やっぱトリドリ？',
+      },
+      {
+        type: 'text',
+        text: '赤のれん(ラーメン)行ってみっか',
+      },
+      {
+        type: 'text',
+        text: 'あのシャレオツなカレー行きますか',
+      },
+    ];
+    messages = [shops[rand]];
+  } else {
+    const messageKey = matchResult[0]
+    messages = [messageData[messageKey]];
+  }
+  
+
+  
   const data = {
     replyToken: targetEvent.replyToken,
-    messages: [messageData[messageKey]]
+    messages
   }
 
   await axios.post('https://api.line.me/v2/bot/message/reply', data, {
